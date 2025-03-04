@@ -1,0 +1,20 @@
+{
+  "name": "tdd-cours",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --noEmit ./index.ts && esbuild index.ts --bundle --platform=node --format=cjs --outfile=dist/index.js"
+  },
+  "bin": {
+    "crafty": "dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.19.79",
+    "esbuild": "^0.17.19",
+    "typescript": "^5.8.2"
+  }
+}
