@@ -3,6 +3,7 @@ export type Message = { id: string; author: string; text: string; publishedAt: D
 
 export interface MessageRepository {
     save(message: Message): Promise<void>;
+    getAllOfUser(user: string): Promise<Message[]>;
 }
 
 export interface DateProvider {

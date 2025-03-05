@@ -61,8 +61,8 @@ class StubDateProvider implements DateProvider {
         return this.now;
     }
 }
-type Fixture = ReturnType<typeof createFixture>;
-const createFixture = () => {
+export type Fixture = ReturnType<typeof createFixture>;
+export const createFixture = () => {
     const dateProvider = new StubDateProvider();
     const messageRepository = new InMemoryMessageRepository();
     const postMessageUseCase = new PostMessageUseCase(messageRepository, dateProvider);
@@ -79,7 +79,7 @@ const createFixture = () => {
             }
         },
         thenPostedMessageShouldBe(expectedMessage: Message) {
-            expect(expectedMessage).toEqual(messageRepository.message);
+            expect(expectedMessage).toEqual(messageRepository.getMessageById(expectedMessage.id));
         },
         thenErrorShouldBe(expectErrorClass: new () => Error) {
             expect(thrownError).toBeInstanceOf(expectErrorClass);
